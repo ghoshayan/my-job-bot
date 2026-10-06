@@ -1,0 +1,35 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{geometry}
+\geometry{a4paper, margin=1in}
+
+\begin{document}
+
+\begin{center}
+    \textbf{\Large \VAR{personal_info.name}} \\
+    \VAR{personal_info.email} | \VAR{personal_info.phone} \\
+    \VAR{personal_info.linkedin}
+\end{center}
+
+\section*{Professional Summary}
+\VAR{summaries.technical} 
+
+\section*{Experience}
+\BLOCK{ for exp in experience }
+    \noindent\textbf{\VAR{exp.title}} \hfill \VAR{exp.start_date} - \VAR{exp.end_date} \\
+    \textit{\VAR{exp.company}}
+    \begin{itemize}
+    \BLOCK{ for bullet in exp.bullet_points }
+        \item \VAR{bullet.text}
+    \BLOCK{ endfor }
+    \end{itemize}
+    \vspace{0.2cm}
+\BLOCK{ endfor }
+
+\section*{Education}
+\BLOCK{ for edu in education }
+    \noindent\textbf{\VAR{edu.institution}} \hfill \VAR{edu.graduation_date} \\
+    \VAR{edu.degree}
+\BLOCK{ endfor }
+
+\end{document}
