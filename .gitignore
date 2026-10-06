@@ -1,0 +1,9 @@
+venv/
+.browser_data/
+__pycache__/
+*.pdf
+*.log
+*.aux
+*.out
+
+master_data.yaml

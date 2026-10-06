@@ -1,0 +1,42 @@
+personal_info:
+  name: "Your Name"
+  email: "your.email@example.com"
+  phone: "+49 123 4567890"
+  linkedin: "linkedin.com/in/yourprofile"
+  github: "github.com/yourusername"
+  location: "Berlin, Germany"
+
+summaries:
+  technical: "A highly skilled software engineer with expertise in Python, automation, and distributed systems."
+  management: "Experienced technical lead with a track record of driving cross-functional teams to deliver complex software projects."
+
+experience:
+  - company: "Tech Corp"
+    title: "Senior Developer"
+    start_date: "01/2023"
+    end_date: "Present"
+    bullet_points:
+      - text: "Developed an automated data pipeline using Python and Playwright, reducing manual entry time by 80%."
+        tags: ["python", "automation", "playwright"]
+      - text: "Orchestrated CI/CD deployments via GitHub Actions and Docker containers."
+        tags: ["devops", "docker", "github"]
+      - text: "Mentored a team of 3 junior developers."
+        tags: ["leadership", "management"]
+
+  - company: "Data Inc"
+    title: "Junior Developer"
+    start_date: "06/2021"
+    end_date: "12/2022"
+    bullet_points:
+      - text: "Maintained legacy backend systems and migrated databases to AWS."
+        tags: ["aws", "backend", "databases"]
+
+education:
+  - institution: "University of Example"
+    degree: "B.Sc. Computer Science"
+    graduation_date: "05/2021"
+
+skills:
+  languages: ["Python", "JavaScript", "SQL"]
+  frameworks: ["Playwright", "Jinja2", "Docker"]
+  tools: ["Git", "LaTeX", "Antigravity"]
