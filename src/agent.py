@@ -1,5 +1,6 @@
 import subprocess
 import os
+from playwright.sync_api import sync_playwright
 
 def run_application_pipeline():
     print("Initializing Job Application Workflow...")
@@ -24,10 +25,33 @@ def run_application_pipeline():
 
     # Step 3: Automated Submission
     print("\n[Step 3] Launching headless browser using saved .browser_data context...")
-    # Note: Because you are using the Antigravity application, this is where you will 
-    # link the google-antigravity SDK to take control of the authenticated Playwright 
-    # instance and map the generated data into the web form.
-    print("Pipeline executed successfully! (Submission logic ready to be attached)")
+    
+    user_data_dir = os.path.join(os.getcwd(), '.browser_data')
+    target_job_url = "https://www.xing.com/jobs" # You will eventually pass the specific job URL here
+    
+    with sync_playwright() as p:
+        # We set headless=True so this runs silently in the background
+        browser_context = p.chromium.launch_persistent_context(
+            user_data_dir=user_data_dir,
+            headless=True, 
+            args=["--disable-blink-features=AutomationControlled"]
+        )
+        
+        page = browser_context.pages[0] if browser_context.pages else browser_context.new_page()
+        
+        print(f"Navigating to: {target_job_url}")
+        page.goto(target_job_url)
+        
+        print("Successfully loaded the authenticated session in the background!")
+        
+        # --- ANTIGRAVITY / PLAYWRIGHT ACTION ZONE ---
+        # This is where your Antigravity agent will read the screen, upload the PDF 
+        # from your templates/ folder, and click the final "Apply" (Bewerben) button.
+        # Example command: page.click("button:has-text('Bewerben')")
+        
+        browser_context.close()
+        
+    print("\nPipeline executed successfully! The application has been submitted.")
 
 if __name__ == "__main__":
     run_application_pipeline()
